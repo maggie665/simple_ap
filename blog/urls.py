@@ -15,12 +15,15 @@ Including another URLconf
 """
 from blog import admin
 from django.urls import path, include
-from blog.views import index, post_list, post_detail, PostViewSet
+from blog.views import index, post_list, post_detail, PostViewSet, UserViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 router.register('post_viewset', PostViewSet, 'post_model_viewset')
+router.register('users', UserViewSet, 'users')
+
 urlpatterns = router.urls
+
 
 urlpatterns.append(path('', index))
 urlpatterns.append(path('posts/', post_list))
